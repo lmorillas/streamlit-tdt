@@ -49,10 +49,13 @@ ambito = st.selectbox('Selecciona Ambito', ambitos)
 
 # st.write(get_canales(data, zona, ambito))
 canales = get_canales(data, zona, ambito)
+canalestxt=''
 for c in canales:
-    imagen = f'![{c["name"]}]({c["logo"]})'
-    st.markdown(f'[{imagen}]({c["url"]})')
-
+    # imagen = f'![{c["name"]}]({c["logo"]})'
+    imagen = f'<img src="{c["logo"]}" alt="{c["name"]}" width="50px" >'
+    texto = (f'[{imagen}]({c["url"]})')
+    canalestxt += texto + ' '
+st.markdown(canalestxt, unsafe_allow_html=True)
 
 ## TODO
 # - [ ] ver imágenes en columnas
